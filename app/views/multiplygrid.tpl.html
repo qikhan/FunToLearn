@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<div class="panel panel-primary">
+  		<div class="panel-heading">Multiply Grid Funny Emotions!</div>
+  		<div class="panel-body">			 
+		  	<div class="row">
+		  		<div class="col-md-5">
+		  			<input type="number" id="num1" ng-model="num1" min="0" max="100">
+		  			<button type="button" class="btn btn-primary" ng-click="flip()"><i class="fa fa-exchange"></i></button>
+		  			<input type="number" id="num2" ng-model="num2" min="0" max="100">
+		  			=
+		  			<input type="number" id="answer" disabled value="{{num1 * num2}}">
+		  		</div>		  		
+		  		<div class="col-md-7 fontPlus2">
+		  			<!--button type="button" class="btn btn-primary" ng-click="show()"-->
+		  			<div ng-bind-html="currentIcon"></div>
+		  			<!--/button -->
+		  		</div>	  
+			</div>	
+			<div class="row">
+				<div class="alert alert-danger" ng-show="isInvalidInput()" role="alert">Numbers are to big! Must be less than 100.</div>			
+			</div>
+			<div class="row paddedBorder">
+				<div class="row paddedBorder">
+					<div class="col-sm-2">					
+					<button type="button" class="btn btn fontPlus2" ng-click="setIcon('&#128513;')">&#128513;</button>
+					</div>
+					<div class="col-sm-2">					
+					<button type="button" class="btn btn fontPlus2" ng-click="setIcon('&#128516;')">&#128516;</button>
+					</div>
+					<div class="col-sm-2">					
+					<button type="button" class="btn btn fontPlus2" ng-click="setIcon('&#128541;')">&#128541;</button>
+					</div>
+				</div>
+				<div class="row paddedBorder">
+					<div class="col-sm-2">					
+					<button type="button" class="btn btn fontPlus2" ng-click="setIcon('&#128557;')">&#128557;</button>
+					</div>
+					<div class="col-sm-2">					
+					<button type="button" class="btn btn fontPlus2" ng-click="setIcon('&#128526;')">&#128526;</button>
+					</div>
+					<div class="col-sm-2">					
+					<button type="button" class="btn btn fontPlus2" ng-click="setIcon('&#128564;')">&#128564;</button>
+					</div>
+				</div>	
+			</div>
+			<div class="row">
+				<div class="panel panel-success">
+		      		<div class="panel-heading">Multiply Grid</div>
+		      		<div id="xdata" class="panel-body" style="overflow-x: scroll;">
+	      				<table class="table-bordered fontPlus2">
+	      					<tr ng-repeat="r in getRows() track by $index">
+		      					<td ng-repeat="c in getColumns() track by $index">
+		      						<div ng-bind-html="currentIcon"></div>
+		      					</td>	
+	      					</tr>
+	      				</table>
+		      		</div>			 
+		      	</div>
+			</div>
+		</div>
+</div>
