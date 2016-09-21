@@ -18,12 +18,13 @@ angular.module('funToLearnApp')
     		$scope.num1 = 0;
     		$scope.num2 = 0;
 
+        $log.debug($scope.num1);
     		$scope.setIcon = function(icon) {
     			$scope.currentIcon = icon;
     		};
 
     		$scope.flip = function() {
-    			var temp = $scope.num1
+    			var temp = $scope.num1;
     			$scope.num1 = $scope.num2;
     			$scope.num2 = temp;
     		};

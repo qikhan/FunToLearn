@@ -19,6 +19,10 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn'
   });
 
+  // import the grunt-war 
+  //grunt.loadNpmTasks('grunt-war');
+  require('grunt-war')(grunt);
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -63,6 +67,28 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
+      }
+    },
+
+    /*
+       * Build a WAR (web archive) without Maven or the JVM installed.
+       */
+    war: {
+      target: {
+        options: {
+          war_dist_folder: 'build',
+          war_name: 'funToLearnApp',
+          webxml_welcome: 'index.html',
+          webxml_mime_mapping: [ { extension: 'woff', mime_type: 'application/font-woff' } ]
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'dist',
+            src: ['**'],
+            dest: ''
+          }
         ]
       }
     },
@@ -485,4 +511,11 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('buildwar', [
+    'newer:jshint',
+    'build',
+    'war'
+  ]);
+
 };

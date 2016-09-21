@@ -12,7 +12,7 @@ angular.module('funToLearnApp')
   		[
   		'$scope',  		
   		function ($scope) {
-    
+    		$scope.data = {};
   		}
   		]
   	);
